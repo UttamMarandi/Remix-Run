@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "@remix-run/react";
+import { json } from "@remix-run/node";
 
-//  This function needs to be named loader.
+//  This function requires to be the name loader.
 export const loader = async () => {
   const posts = [
     {
@@ -12,12 +13,7 @@ export const loader = async () => {
       title: "Trail Riding with one wheel",
     },
   ];
-  const postsString = JSON.stringify({ posts });
-  return new Response(postsString, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  return json({ posts });
 };
 
 const Posts = () => {
